@@ -1,46 +1,68 @@
-<div class="card">
-    <div class="card-body">
-        <h1 class="card-title">Register</h1>
-
-        <form [formGroup]="registerForm" autocomplete="off" novalidate (ngSubmit)="registerUser(registerForm.value)">
-            <div class="form-group row">
-                <label for="userName" class="col-form-label col-sm-2">User Name:</label>
-                <div class="col-md-5">
+<section class="py-5">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-5">
+          <h1 class="hero-heading">Register</h1>
+          <p class="text-muted mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          
+          <form [formGroup]="registerForm" autocomplete="off" novalidate (ngSubmit)="registerUser(registerForm.value)">
+     
+       
+          
+          <h2 class="h4 mb-4">Personal information</h2>
+          
+            <div class="row">
+        
+              <div class="form-group col-md-6 mb-3">
+                <label for="userName" class="form-label">User Name:</label>
+               
                     <input type="text" id="userName" formControlName="userName" class="form-control" />
-                </div>
+              
             </div>
           
-            <div class="form-group row">
-                <label for="email" class="col-form-label col-sm-2">Email:</label>
-                <div class="col-md-5">
+            <div class="form-group col-md-6 mb-3">
+                <label for="email" class="form-label">Email:</label>
+               
                     <input type="email" id="email" formControlName="email" class="form-control" />
-                </div>
-                <div class="col-md-5">
+         
+           
                     <em *ngIf="validateControl('email') && hasError('email', 'email')">Please provide a valid email</em>
                     <em *ngIf="validateControl('email') && hasError('email', 'required')">Email is required</em>
-                </div>
+           
             </div>
-            <div class="form-group row">
-                <label for="password" class="col-form-label col-sm-2">Password:</label>
-                <div class="col-md-5">
+            </div>
+          
+      
+          <h2 class="h4 mb-4">Your password</h2>
+         
+            <div class="row">
+              
+              <div class="form-group col-md-6 mb-3">
+                <label for="password" class="form-label">Password:</label>
+               
                     <input type="password" id="password" formControlName="password" class="form-control" />
-                </div>
-                <div class="col-md-5">
+              
                     <em *ngIf="validateControl('password') && hasError('password', 'required')">Password is required</em>
-                </div>
+               
             </div>
-            <div class="form-group row">
-                <label for="confirm" class="col-form-label col-sm-2">Confirm Password:</label>
-                <div class="col-md-5">
-                    <input type="password" id="confirm" formControlName="confirm" class="form-control" />
-                </div>
-            </div>
+            <div class="form-group col-md-6 mb-3">
+                <label for="confirm" class="form-label">Confirm Password:</label>
+                <input type="password" id="confirm" formControlName="confirm" class="form-control" />
+                <em *ngIf="validateControl('confirm') && hasError('confirm', 'required')">Confirmation is required</em>
+                <em *ngIf="hasError('confirm', 'mustMatch')">Passwords must match</em>
+         </div>
             <br>
-            <div class="form-group row">
+            <div class="form-group col-12">
                 <div class="col-md-1">          
-                    <button type="submit" class="btn btn-info" [disabled]="!registerForm.valid">Register</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Register</button>
                 </div>
+            </div>
             </div>
         </form>
+        </div>
+      </div>
     </div>
-</div>
+  </section>
+
+
+

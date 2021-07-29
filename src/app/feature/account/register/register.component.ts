@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { PasswordConfirmationValidatorService } from 'src/app/shared/custom-validators/password-confirmation-validator.service';
 import { UserForRegistrationDto } from 'src/app/shared/models/userForRegistrationDto';
 import { AccountService } from '../account.service';
 
@@ -11,7 +12,7 @@ import { AccountService } from '../account.service';
 export class RegisterComponent implements OnInit {
 
   registerForm: any;
-  constructor(private _authService: AccountService) { }
+  constructor(private _authService: AccountService, private _passConfValidator: PasswordConfirmationValidatorService) { }
   ngOnInit(): void {
     this.registerForm = new FormGroup({
       userName: new FormControl(''),
@@ -19,7 +20,11 @@ export class RegisterComponent implements OnInit {
       password: new FormControl('', [Validators.required]),
       confirm: new FormControl('')
     });
+
+    this.registerForm.get('confirm').setValidators([Validators.required,
+      this._passConfValidator.validateConfirmPassword(this.registerForm.get('password'))]);
   }
+  
   public validateControl = (controlName: string) => {
     return this.registerForm.controls[controlName].invalid && this.registerForm.controls[controlName].touched
   }

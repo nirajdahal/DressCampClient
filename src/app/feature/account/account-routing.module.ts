@@ -4,10 +4,12 @@ import { Route } from '@angular/compiler/src/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from 'src/app/core/guards/auth.guard';
+import { AdminGuard } from 'src/app/core/guards/admin.guard';
 
 
 const routes: Routes = [{
-  path: 'register', component: RegisterComponent,
+  path: 'register', component: RegisterComponent
   
 },
 {

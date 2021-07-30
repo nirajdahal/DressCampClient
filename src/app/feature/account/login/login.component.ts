@@ -18,10 +18,10 @@ export class LoginComponent implements OnInit {
   constructor(private _authService: AccountService , private _router: Router, private _route: ActivatedRoute) { }
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      username: new FormControl("", [Validators.required]),
+      email: new FormControl("", [Validators.required, Validators.email]),
       password: new FormControl("", [Validators.required])
     })
-    this._returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/';
+    this._returnUrl = this._route.snapshot.queryParams['returnUrl'] || '';
   }
   public validateControl = (controlName: string) => {
     return this.loginForm.controls[controlName].invalid && this.loginForm.controls[controlName].touched
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     this.showError = false;
     const login = {... loginFormValue };
     const userForAuth: UserForAuthenticationDto = {
-      email: login.username,
+      email: login.email,
       password: login.password
     }
     this._authService.loginUser(userForAuth)

@@ -1,32 +1,58 @@
-<div class="card">
-    <div class="card-body">
-     
-        <form [formGroup]="loginForm" autocomplete="off" novalidate (ngSubmit)="loginUser(loginForm.value)">
-            <div class="form-group row">
-                <label for="email" class="col-form-label col-sm-2">Email:</label>
-                <div class="col-md-5">
-                    <input type="text" id="email" formControlName="email" class="form-control" />
+
+
+
+
+ 
+    <section class="py-5">
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-lg-5">
+            <h1 class="hero-heading">Login</h1>
+            <p class="text-muted mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <h2 class="h4 mb-4">Returning user</h2>
+            <form class="mb-5" [formGroup]="loginForm" autocomplete="off" novalidate (ngSubmit)="loginUser(loginForm.value)">
+              <div class="row">
+      
+                <div class="form-group form-group col-lg-6 mb-3">
+                    <label for="email" class="form-label">Email Address:</label>
+                    
+                        <input type="text" id="email" formControlName="email" class="form-control" placeholder="Email address"/>
+                  
+                        <em *ngIf="validateControl('email') && hasError('email', 'required')">Email is required</em>
+                        <em *ngIf="validateControl('email') && hasError('email', 'email')">Please provide a valid email</em>
+                   
                 </div>
-                <div class="col-md-5">
-                    <em *ngIf="validateControl('email') && hasError('email', 'required')">Email is required</em>
-                    <em *ngIf="validateControl('email') && hasError('email', 'email')">Please provide a valid email</em>
+                <div class="form-group form-group col-lg-6 mb-3">
+                    <label for="password" class="form-label">Password:</label>
+                   
+                        <input type="password" id="password" formControlName="password" class="form-control" placeholder="Password"/>
+                   
+                        <em *ngIf="validateControl('password') && hasError('password', 'required')">Password is required</em>
+                
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="password" class="col-form-label col-sm-2">Password:</label>
-                <div class="col-md-5">
-                    <input type="password" id="password" formControlName="password" class="form-control" />
+                <br>
+                <div class="form-group col-12">
+                  
+                        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
+                    
                 </div>
-                <div class="col-md-5">
-                    <em *ngIf="validateControl('password') && hasError('password', 'required')">Password is required</em>
-                </div>
-            </div>
-            <br>
-            <div class="form-group row">
-                <div class="col-md-1">
-                    <button type="submit" class="btn btn-info" [disabled]="!loginForm.valid">Login</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
+              </div>
+            </form>
+
+
+
+
+            
+          </div>
+          <div class="col-lg-5 ms-auto">
+            <h2 class="h4 mb-4">New customer</h2>
+            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><a class="btn btn-primary" routerLink="/account/register">Create an account</a>
+          </div>
+        </div>
+      </div>
+    </section>
+   

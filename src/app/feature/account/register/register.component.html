@@ -23,14 +23,14 @@
             <div class="form-group col-md-6 mb-3">
               <label for="userName" class="form-label">User Name:</label>
 
-              <input type="text" id="userName" formControlName="userName" class="form-control" />
+              <input type="text" id="userName" formControlName="userName" class="form-control" placeholder="What do you want to be call"/>
 
             </div>
 
             <div class="form-group col-md-6 mb-3">
               <label for="email" class="form-label">Email:</label>
 
-              <input type="email" id="email" formControlName="email" class="form-control" />
+              <input type="email" id="email" formControlName="email" class="form-control" placeholder="Email Address"/>
 
 
               <em *ngIf="validateControl('email') && hasError('email', 'email')">Please provide a valid email</em>
@@ -47,14 +47,14 @@
             <div class="form-group col-md-6 mb-3">
               <label for="password" class="form-label">Password:</label>
 
-              <input type="password" id="password" formControlName="password" class="form-control" />
+              <input type="password" id="password" formControlName="password" class="form-control" placeholder="Password"/>
 
               <em *ngIf="validateControl('password') && hasError('password', 'required')">Password is required</em>
 
             </div>
             <div class="form-group col-md-6 mb-3">
               <label for="confirm" class="form-label">Confirm Password:</label>
-              <input type="password" id="confirm" formControlName="confirm" class="form-control" />
+              <input type="password" id="confirm" formControlName="confirm" class="form-control" placeholder="Confirm Password"/>
               <em *ngIf="validateControl('confirm') && hasError('confirm', 'required')">Confirmation is required</em>
               <em *ngIf="hasError('confirm', 'mustMatch')">Passwords must match</em>
             </div>

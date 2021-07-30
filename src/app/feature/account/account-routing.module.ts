@@ -6,16 +6,15 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from 'src/app/core/guards/auth.guard';
 import { AdminGuard } from 'src/app/core/guards/admin.guard';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
-const routes: Routes = [{
-  path: 'register', component: RegisterComponent
-  
-},
-{
-  path: 'login', component: LoginComponent,
-  
-}]
+const routes: Routes = [
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'forgotpassword', component: ForgotPasswordComponent },
+  { path: 'resetpassword', component: ResetPasswordComponent }]
 
 @NgModule({
   declarations: [],
@@ -23,7 +22,7 @@ const routes: Routes = [{
     CommonModule,
     RouterModule.forChild(routes)
   ],
-  exports:[
+  exports: [
     RouterModule
   ]
 })

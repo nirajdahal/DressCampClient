@@ -5,6 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {  LoginResponse, UserForAuthenticationDto } from 'src/app/shared/models/UserForAuthenticationDto';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { ForgotPasswordDto } from 'src/app/shared/models/ForgotPasswordDto';
+import { ResetPasswordDto } from 'src/app/shared/models/ResetPasswordDto';
 @Injectable({
   providedIn: 'root'
 })
@@ -50,6 +52,16 @@ export class AccountService {
     return this._http.post( this.urlAddress +"accounts/registration", body);
   }
 
+
+
+  public forgotPassword = ( body: ForgotPasswordDto) => {
+    return this._http.post(this.urlAddress+"accounts/forgotpassword", body);
+  }
+
+
+  public resetPassword = (body: ResetPasswordDto) => {
+    return this._http.post(this.urlAddress+"accounts/resetPassword", body);
+  }
 
   public testControl = () => {
     return this._http.get( this.urlAddress +"test");

@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
       password: formValues.password,
       confirmPassword: formValues.confirm
     };
-    this._authService.registerUser("api/accounts/registration", user)
+    this._authService.registerUser( user)
     .subscribe(_ => {
       console.log("Successful registration");
     },

@@ -23,4 +23,10 @@ export class NavBarComponent implements OnInit {
     this._router.navigate(["/account/login"]);
   }
 
+  public TestCont(){
+   this._authService.testControl().subscribe(r =>
+    
+    {})
+  }
+
 }

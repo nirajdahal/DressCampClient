@@ -46,8 +46,13 @@ export class AccountService {
     return role === 'Admin';
   }
   
-  public registerUser = (route: string, body: UserForRegistrationDto) => {
+  public registerUser = ( body: UserForRegistrationDto) => {
     return this._http.post( this.urlAddress +"accounts/registration", body);
+  }
+
+
+  public testControl = () => {
+    return this._http.get( this.urlAddress +"test");
   }
 
   public loginUser = (userForAuthenticationDto: UserForAuthenticationDto) => {

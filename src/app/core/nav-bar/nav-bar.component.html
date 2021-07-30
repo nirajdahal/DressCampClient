@@ -39,8 +39,24 @@
           <a class="nav-link text-uppercase position-relative" routerLink='/account/register' routerLinkActive="active"
             [routerLinkActiveOptions]="{exact:true}">Register</a>
         </li>
-        <li *ngIf="isUserAuthenticated" class="nav-item me-3"><a (click)="logout()" class="nav-link text-uppercase position-relative" href="#"><i
-          class="p-2 fas fa-user"></i><span class="badge rounded-pill bg-primary"></span></a></li>
+        <li *ngIf="isUserAuthenticated" class="nav-item dropdown me-lg-3"><a 
+          
+          class="nav-link 
+            text-uppercase dropdown-toggle" id="navbarDropdown"
+            href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
+          class="p-2 fas fa-user"></i><span class="badge rounded-pill bg-primary"></span>Welcome</a>
+
+
+          
+          <ul class="dropdown-menu mt-3" aria-labelledby="navbarDropdown">
+         
+            <li><a class="dropdown-item" href="shop.html">My Orders</a></li>
+        
+            <li><a class="dropdown-item" href="cart.html">Shopping cart</a></li>
+            <li><a (click)="logout()"  class="dropdown-item" >Logout</a></li>
+
+          </ul>
+        </li>
       </ul>
     </div>
   </div>

@@ -10,6 +10,7 @@ import { CoreModule } from './core/core.module';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { JwtInterceptor, JwtModule } from '@auth0/angular-jwt';
 import { HomeComponent } from './feature/home/home.component';
+import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -20,6 +21,7 @@ export function tokenGetter() {
     HomeComponent
   ],
   imports: [
+    SocialLoginModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
@@ -37,7 +39,21 @@ export function tokenGetter() {
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '419840322447-qd5ce3c684qmvsuo5sbkth3mhu6kbo29.apps.googleusercontent.com'
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    }
   ],
   bootstrap: [AppComponent]
 })

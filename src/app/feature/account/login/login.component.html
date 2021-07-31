@@ -37,19 +37,23 @@
                 <br>
                 <div class="form-group col-12">
                   
-                  <a class="text-primary mb-2" routerLink='/account/forgotpassword'>Forgot Password</a>
+                  <a class="text-primary mb-2 text-decoration-none" routerLink='/account/forgotpassword'>Forgot Password</a>
               
-          </div>
-          <br>
+          
+          
+                </div>
+        
+                <br>
                 <div class="form-group col-12 mt-3">
                   
                         <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
-                    
+                        <a>&nbsp;&nbsp;or&nbsp;&nbsp;</a>
+                        <a class="text-danger text-decoration-none" type="button" (click)="externalLogin()">Login With Google</a>
                 </div>
               </div>
             </form>
 
-
+            
 
 
             

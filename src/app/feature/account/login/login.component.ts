@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SocialUser } from 'angularx-social-login';
+import { ExternalAuthDto } from 'src/app/shared/models/ExternalAuthDto';
 import { UserForAuthenticationDto } from 'src/app/shared/models/UserForAuthenticationDto';
 import { AccountService } from '../account.service';
 
@@ -43,5 +45,33 @@ export class LoginComponent implements OnInit {
        this._authService.sendAuthStateChangeNotification(res.isAuthenticationSuccesfull);
        this._router.navigate([this._returnUrl]);
     })
+  }
+
+  public externalLogin = () => {
+    this.showError = false;
+    this._authService.signInWithGoogle()
+    .then(res => {
+      const user: SocialUser = { ...res };
+      console.log(user);
+      const externalAuth: ExternalAuthDto = {
+        provider: user.provider,
+        idToken: user.idToken
+      }
+      this.validateExternalAuth(externalAuth);
+    }, error => console.log(error))
+  }
+
+  private validateExternalAuth(externalAuth: ExternalAuthDto) {
+    this._authService.externalLogin('api/accounts/externallogin', externalAuth)
+      .subscribe(res => {
+        localStorage.setItem("token", res.token);
+        this._authService.sendAuthStateChangeNotification(res.isAuthenticationSuccesfull);
+        this._router.navigate([this._returnUrl]);
+      },
+      error => {
+        this.errorMessage = error;
+        this.showError = true;
+        this._authService.signOutExternal();
+      });
   }
 }

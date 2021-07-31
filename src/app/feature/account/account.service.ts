@@ -8,6 +8,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { ForgotPasswordDto } from 'src/app/shared/models/ForgotPasswordDto';
 import { ResetPasswordDto } from 'src/app/shared/models/ResetPasswordDto';
 import { CustomEncoder } from 'src/app/shared/CustomEncoder';
+import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
+import { ExternalAuthDto } from 'src/app/shared/models/ExternalAuthDto';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +20,7 @@ export class AccountService {
   public authChanged = this._authChangeSub.asObservable();
   
  
-  constructor(private _http: HttpClient,private _jwtHelper: JwtHelperService)  { }
+  constructor(private _http: HttpClient,private _jwtHelper: JwtHelperService, private _externalAuthService: SocialAuthService)  { }
 
   public isUserAuthenticated = (): boolean => {
     var token = localStorage.getItem("token");
@@ -87,6 +89,16 @@ export class AccountService {
     params = params.append('token', token);
     params = params.append('email', email);
     return this._http.get(this.urlAddress+"accounts/emailconfirmation", { params: params });
+  }
+  public signInWithGoogle = ()=> {
+    return this._externalAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+  
+  public signOutExternal = () => {
+    this._externalAuthService.signOut();
+  }
+  public externalLogin = (route: string, body: ExternalAuthDto) => {
+    return this._http.post<LoginResponse>(this.urlAddress +"accounts/externallogin", body);
   }
 
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { PasswordConfirmationValidatorService } from 'src/app/shared/custom-validators/password-confirmation-validator.service';
 import { UserForRegistrationDto } from 'src/app/shared/models/userForRegistrationDto';
 import { AccountService } from '../account.service';
@@ -12,7 +14,7 @@ import { AccountService } from '../account.service';
 export class RegisterComponent implements OnInit {
 
   registerForm: any;
-  constructor(private _authService: AccountService, private _passConfValidator: PasswordConfirmationValidatorService) { }
+  constructor(private toastr: ToastrService, private _router: Router,private _authService: AccountService, private _passConfValidator: PasswordConfirmationValidatorService) { }
   ngOnInit(): void {
     this.registerForm = new FormGroup({
       userName: new FormControl(''),
@@ -37,14 +39,13 @@ export class RegisterComponent implements OnInit {
       userName: formValues.userName,
       email: formValues.email,
       password: formValues.password,
-      confirmPassword: formValues.confirm
+      confirmPassword: formValues.confirm,
+      clientURI: 'http://localhost:4200/account/emailconfirmation'
     };
     this._authService.registerUser( user)
     .subscribe(_ => {
-      console.log("Successful registration");
-    },
-    error => {
-      console.log(error);
+      this.toastr.success("Please Confirm You Email Address","Successful registration");
+      this._router.navigateByUrl("account/login")
     })
   }
 }

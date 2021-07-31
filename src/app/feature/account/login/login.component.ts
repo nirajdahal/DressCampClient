@@ -34,7 +34,8 @@ export class LoginComponent implements OnInit {
     const login = {... loginFormValue };
     const userForAuth: UserForAuthenticationDto = {
       email: login.email,
-      password: login.password
+      password: login.password,
+      clientURI: 'http://localhost:4200/account/forgotpassword'
     }
     this._authService.loginUser(userForAuth)
     .subscribe(res => {

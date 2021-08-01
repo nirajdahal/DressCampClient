@@ -1,0 +1,103 @@
+<section class="py-1 ">
+  <div class="container py-5">
+    <div class="row">
+
+      <div class="row mt-0 p-0 mb-0">
+
+        <div class="">
+          <div class="input-group mb-3 d-flex justify-content-center">
+            <input [(ngModel)]="selectedSearchValue" type="text" class="rounded-0 border-primary"
+              placeholder="      Search Product     " aria-label="search" aria-describedby="button-addon2">
+            <button (click)=" applySearch()" class="btn btn-outline-primary rounded-0" type="button"
+              id="button-addon2">Search</button>
+          </div>
+        </div>
+      </div>
+      <!-- Shop sidebar-->
+      <div class="col-xl-2 col-lg-3 order-1 order-lg-1">
+        <div class="row">
+          <div class="col-md-6 col-lg-12">
+            <h5 class="mb-4">Product Brands</h5>
+            <ul class="list-unstyled text-muted mb-5">
+              <li *ngFor="let productBrand of productBrands"
+                class="mb-2 d-flex align-items-center justify-content-between">
+                
+                <a class="reset-anchor btn" [ngClass]="{'selectedRow': productBrand.id === selectedBrandId}"
+                  (click)="onBrandSelected(productBrand.id)">{{productBrand.name}}</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6 col-lg-12">
+
+            <h5 class="mb-4">Product Types</h5>
+            <ul class="list-unstyled text-muted mb-5">
+              <li *ngFor="let productType of productTypes"
+                class="mb-2 d-flex align-items-center justify-content-between"><a class="reset-anchor btn"
+                  [ngClass]="{'selectedRow': productType.id === selectedTypeId}"
+                  (click)="onTypeSelected(productType.id)">{{productType.name}}</a></li>
+
+            </ul>
+          </div>
+        </div>
+
+      </div>
+      <!-- Shop listing-->
+      <div class="col-xl-10 col-lg-9 order-2 order-lg-2 mb-5 mb-lg-0">
+        <!-- Listing filter-->
+        <div class="row mb-4 pb-3 align-items-center">
+          <div class="col-md-6 text-center text-md-start">
+            <p class="small text-muted">Total <strong class="text-dark">{{totalItem}} </strong>items</p>
+          </div>
+          <div class="col-md-6 text-lg-end">
+            <div class="d-flex align-items-center justify-content-center justify-content-md-end">
+              <ul class="list-inline mb-0">
+                <li class="list-inline-item"><a (click)="clearFilter()" class="btn btn-outline-danger px-2 btn">Clear
+                    Filters</a></li>
+
+              </ul>
+              <ul class="list-inline mb-0 ms-2">
+                <li class="list-inline-item text-start">
+                  <select (change)="onSortSelected($event.target)" class="form-select rounded-0"
+                    aria-label="Default select example">
+                    <option value="name" selected>Alphabetical</option>
+                    <option value="priceAsc">Sort - Price Low</option>
+                    <option value="priceDesc">Sort - Price High</option>
+
+                  </select>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- Product-->
+          <div *ngFor="let product of products" class="col-xl-3 col-lg-4 col-6">
+            <div class="product mb-4"><span class="badge rounded-0 bg-primary">{{product.productBrand}}</span><a
+                href="detail.html"><img class="img-fluid"
+                  src="https://whitecompany.scene7.com/is/image/whitecompany/Face-Cloth---Set-of-3/SKDCL_15_MAIN"
+                  alt="Round grey hanging decor"></a>
+              <div class="cta shadow d-inline-block"><a class="product-btn" href="#"><i class="fas fa-heart"></i></a><a
+                  class="product-btn" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a><a
+                  class="product-btn" href="cart.html"><i class="fas fa-dolly-flatbed"></i></a></div>
+            </div>
+            <h6 class="text-center"><a class="reset-anchor" href="detail.html">{{product.name}}</a></h6>
+            <p class="text-center text-muted font-weight-bold mb-4">Rs. {{product.price}}</p>
+          </div>
+
+          <!-- Pagination-->
+          <nav class="pt-5" aria-label="Page navigation">
+            <ul class="pagination justify-content-center justify-content-lg-end mb-0">
+              <li class="page-item mx-1"><a class="page-link py-1" href="#" aria-label="Previous"><span
+                    aria-hidden="true">«</span></a></li>
+              <li class="page-item mx-1 active"><a class="page-link py-1" href="#">1</a></li>
+              <li class="page-item mx-1"><a class="page-link py-1" href="#">2</a></li>
+              <li class="page-item mx-1"><a class="page-link py-1" href="#">3</a></li>
+              <li class="page-item mx-1"><a class="page-link py-1" href="#" aria-label="Next"><span
+                    aria-hidden="true">»</span></a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

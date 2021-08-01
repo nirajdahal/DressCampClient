@@ -11,6 +11,8 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { JwtInterceptor, JwtModule } from '@auth0/angular-jwt';
 import { HomeComponent } from './feature/home/home.component';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
+import { ShopComponent } from './feature/shop/shop.component';
+import { FormsModule } from '@angular/forms';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -18,7 +20,8 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    ShopComponent
   ],
   imports: [
     SocialLoginModule,
@@ -26,6 +29,7 @@ export function tokenGetter() {
     BrowserModule,
     AppRoutingModule,
     CoreModule,
+    FormsModule ,
     RouterModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),

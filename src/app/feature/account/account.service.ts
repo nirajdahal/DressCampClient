@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { UserForRegistrationDto } from 'src/app/shared/models/userForRegistrationDto';
+import { UserForRegistrationDto } from 'src/app/shared/models/users/userForRegistrationDto';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import {  LoginResponse, UserForAuthenticationDto } from 'src/app/shared/models/UserForAuthenticationDto';
+import {  LoginResponse, UserForAuthenticationDto } from 'src/app/shared/models/users/UserForAuthenticationDto';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { ForgotPasswordDto } from 'src/app/shared/models/ForgotPasswordDto';
-import { ResetPasswordDto } from 'src/app/shared/models/ResetPasswordDto';
+import { ForgotPasswordDto } from 'src/app/shared/models/users/ForgotPasswordDto';
+import { ResetPasswordDto } from 'src/app/shared/models//users/ResetPasswordDto';
 import { CustomEncoder } from 'src/app/shared/CustomEncoder';
 import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
-import { ExternalAuthDto } from 'src/app/shared/models/ExternalAuthDto';
+import { ExternalAuthDto } from 'src/app/shared/models/users/ExternalAuthDto';
 @Injectable({
   providedIn: 'root'
 })

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ForgotPasswordDto } from 'src/app/shared/models/ForgotPasswordDto';
+import { ForgotPasswordDto } from 'src/app/shared/models/users/ForgotPasswordDto';
 import { AccountService } from '../account.service';
 
 @Component({

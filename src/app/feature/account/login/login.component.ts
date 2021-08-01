@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SocialUser } from 'angularx-social-login';
-import { ExternalAuthDto } from 'src/app/shared/models/ExternalAuthDto';
-import { UserForAuthenticationDto } from 'src/app/shared/models/UserForAuthenticationDto';
+import { ExternalAuthDto } from 'src/app/shared/models/users/ExternalAuthDto';
+import { UserForAuthenticationDto } from 'src/app/shared/models/users/UserForAuthenticationDto';
 import { AccountService } from '../account.service';
 
 @Component({

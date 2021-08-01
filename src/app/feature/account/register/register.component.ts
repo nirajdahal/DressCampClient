@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { PasswordConfirmationValidatorService } from 'src/app/shared/custom-validators/password-confirmation-validator.service';
-import { UserForRegistrationDto } from 'src/app/shared/models/userForRegistrationDto';
+import { UserForRegistrationDto } from 'src/app/shared/models/users/userForRegistrationDto';
 import { AccountService } from '../account.service';
 
 @Component({

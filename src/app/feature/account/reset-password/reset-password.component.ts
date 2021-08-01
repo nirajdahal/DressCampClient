@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PasswordConfirmationValidatorService } from 'src/app/shared/custom-validators/password-confirmation-validator.service';
-import { ResetPasswordDto } from 'src/app/shared/models/ResetPasswordDto';
+import { ResetPasswordDto } from 'src/app/shared/models/users/ResetPasswordDto';
 import { AccountService } from '../account.service';
 
 @Component({

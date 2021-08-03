@@ -1,0 +1,10 @@
+<div class="product mb-4"><span class="badge rounded-0 bg-primary">{{product.productBrand}}</span><a
+    href="detail.html"><img class="img-fluid"
+      src="{{product.picture[0].pictureUrl}}"
+      alt="Round grey hanging decor"></a>
+  <div class="cta shadow d-inline-block"><a class="product-btn" href="#"><i class="fas fa-heart"></i></a><a
+      class="product-btn" routerLink="/shop/{{product.id}}" ><i class="fas fa-expand"></i></a><a
+      class="product-btn" href="cart.html"><i class="fas fa-dolly-flatbed"></i></a></div>
+</div>
+<h6 class="text-center"><a class="reset-anchor" href="detail.html">{{product.name}}</a></h6>
+<p class="text-center text-muted font-weight-bold mb-4">Rs. {{product.price}}</p>

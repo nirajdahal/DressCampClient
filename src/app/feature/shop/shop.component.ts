@@ -94,7 +94,7 @@ export class ShopComponent implements OnInit {
   }
 
   applyFilter(e: any) {
-    console.log(e.pageIndex + 1);
+    
     this.currentPage = e.pageIndex + 1;
     this.getProducts();
   }

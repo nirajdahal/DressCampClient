@@ -21,15 +21,13 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    ShopComponent
+    HomeComponent
   ],
   imports: [
     SocialLoginModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    MatPaginatorModule,
     CoreModule,
     FormsModule ,
     RouterModule,

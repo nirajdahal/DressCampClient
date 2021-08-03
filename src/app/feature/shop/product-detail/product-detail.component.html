@@ -1,0 +1,365 @@
+<section class="py-5">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="row">
+          <div class="row">
+            <div class="col-md-2 order-2 order-md-1">
+              <!-- Slider thumbnails-->
+              <div class="swiper-container swiper-thumbnails" id="detailSliderThumb">   
+                <div *ngFor="let picture of product.picture" class="swiper-wrapper">
+                  <div class="swiper-slide"><img class="img-fluid" src="{{picture.pictureUrl}}" (click)="changePicture(picture.pictureUrl)" alt=".."></div>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-md-10 order-1 order-md-2 mb-4 mb-lg-0">
+              <!-- Item slider-->
+              <div class="swiper-container" id="detailSlider">   
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide"><a class="glightbox" href={{pictureToShow}}><img class="img-fluid" src={{pictureToShow}} alt=".."></a></div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Item info-->
+      <div class="col-lg-6">
+        <div class="badge bg-info small rounded-0 mb-2">Trending</div>
+        <h1>Red digital smartwatch</h1>
+        <div class="d-flex align-items-center">
+          <ul class="list-inline mb-2 me-3 small">
+            <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
+            <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
+            <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
+            <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
+            <li class="list-inline-item m-0"><i class="fas fa-star small text-muted"></i></li>
+          </ul>
+          <p class="small text-muted mb-2">12 customer reviews</p>
+        </div>
+        <p class="h4">$250</p>
+        <p class="text-small mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut ullamcorper leo, eget
+          euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus. Vestibulum
+          ultricies aliquam convallis.</p>
+
+
+        <div class="d-flex align-items-center mb-4">
+          <div class="border d-flex align-items-center justify-content-between p-1 me-2">
+            <div class="quantity py-0">
+              <button class="dec-btn p-0" onclick="decrease(this)"><i class="fas fa-caret-left"></i></button>
+              <input class="form-control border-0 shadow-0 p-0 quantity-result" type="text" value="1">
+              <button class="inc-btn p-0" onclick="increase(this)"><i class="fas fa-caret-right"></i></button>
+            </div>
+          </div><a class="btn btn-primary btn-sm py-2 border-bottom-0 px-5 me-3" href="cart.html"> <i
+              class="fas fa-shopping-bag py-1 me-2"></i>Add to cart</a><a class="p-0 reset-anchor d-inline-block mx-2"
+            href="#"><i class="fas fa-heart"></i></a><a class="p-0 reset-anchor d-inline-block mx-2" href="#"><i
+              class="fas fa-share-alt"></i></a>
+        </div><br>
+        <ul class="list-unstyled small d-inline-block">
+          <li class="px-3 py-2 mb-1 bg-light"><strong class="text-uppercase">SKU:</strong><span
+              class="ms-2 text-muted">039</span></li>
+          <li class="px-3 py-2 mb-1 bg-light text-muted"><strong class="text-uppercase text-dark">Category:</strong><a
+              class="reset-anchor ms-2" href="#">Demo Products</a></li>
+          <li class="px-3 py-2 mb-1 bg-light text-muted"><strong class="text-uppercase text-dark">Tags:</strong><a
+              class="reset-anchor ms-2" href="#">Innovation</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pb-5">
+  <div class="container">
+    <div class="row">
+      <!-- Item information-->
+      <div class="col-xl-10 mx-auto">
+        <ul class="nav nav-tabs tabs-fill justify-content-center border-0 flex-column flex-md-row" id="myTab"
+          role="tablist">
+          <li class="nav-item flex-fill text-center bg-light mx-2" role="presentation"><a
+              class="nav-link text-small fw-bold py-3 border-0 active" id="description-tab" data-bs-toggle="tab"
+              href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a></li>
+          <li class="nav-item flex-fill text-center bg-light mx-2" role="presentation"><a
+              class="nav-link text-small fw-bold py-3 border-0" id="info-tab" data-bs-toggle="tab" href="#info"
+              role="tab" aria-controls="info" aria-selected="false">Additional info</a></li>
+          <li class="nav-item flex-fill text-center bg-light mx-2" role="presentation"><a
+              class="nav-link text-small fw-bold py-3 border-0" id="reviews-tab" data-bs-toggle="tab" href="#reviews"
+              role="tab" aria-controls="reviews" aria-selected="false">Reviews</a></li>
+          <li class="nav-item flex-fill text-center bg-light mx-2" role="presentation"><a
+              class="nav-link text-small fw-bold py-3 border-0" id="shipping-tab" data-bs-toggle="tab" href="#shipping"
+              role="tab" aria-controls="shipping" aria-selected="false">Shipping &amp; Returns</a></li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+            <div class="p-3 p-md-5">
+              <p class="text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
+              <ul class="text-muted mb-4">
+                <li>SIM card support</li>
+                <li>Multi operating system</li>
+                <li>512 RAM size</li>
+                <li>Rubber brand material</li>
+              </ul>
+              <div class="row align-items-center mb-4">
+                <div class="col-lg-4 mb-4 mb-lg-0"><img class="img-fluid"
+                    src="https://whitecompany.scene7.com/is/image/whitecompany/Face-Cloth---Set-of-3/SKDCL_15_MAIN"
+                    alt=".."></div>
+                <div class="col-lg-4 mb-4 mb-lg-0"><img class="img-fluid"
+                    src="https://whitecompany.scene7.com/is/image/whitecompany/Face-Cloth---Set-of-3/SKDCL_15_MAIN"
+                    alt=".."></div>
+                <div class="col-lg-4"><img class="img-fluid"
+                    src="https://whitecompany.scene7.com/is/image/whitecompany/Face-Cloth---Set-of-3/SKDCL_15_MAIN"
+                    alt=".."></div>
+              </div>
+              <h6>Design and Display</h6>
+              <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+              </p>
+              <h6>Hardware</h6>
+              <p class="text-muted">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</p>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
+            <div class="p-3 p-md-5">
+              <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+                in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <div class="row">
+                <div class="col-lg-6">
+                  <table class="table table-bordered">
+                    <tbody>
+                      <tr>
+                        <th class="small px-3">Brand:</th>
+                        <td class="small px-3">Other</td>
+                      </tr>
+                      <tr>
+                        <th class="small px-3">RAM Size:</th>
+                        <td class="small px-3">512</td>
+                      </tr>
+                      <tr>
+                        <th class="small px-3">Package thickness:</th>
+                        <td class="small px-3">17 centimeters</td>
+                      </tr>
+                      <tr>
+                        <th class="small px-3">Package weight:</th>
+                        <td class="small px-3">42 grams</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+            <div class="p-3 p-md-5">
+              <p class="small text-muted mb-1">Based on 12 customers</p>
+              <h5 class="mb-4">How customers reviewed this item</h5>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="d-flex mb-4"><img class="rounded-circle p-1 shadow-sm flex-grow-1 align-self-baseline"
+                      src="img/client-1.2821b67d.jpg" alt="..." width="60">
+                    <div class="ms-3">
+                      <h3 class="h6 mb-0">Patrick Wood</h3>
+                      <p class="text-gray small mb-0">15 Mar 2019</p>
+                      <ul class="list-inline mb-3">
+                        <li class="list-inline-item small m-0"><i class="fas fa-star text-primary small"></i></li>
+                        <li class="list-inline-item small m-0"><i class="fas fa-star text-primary small"></i></li>
+                        <li class="list-inline-item small m-0"><i class="fas fa-star text-primary small"></i></li>
+                        <li class="list-inline-item small m-0"><i class="fas fa-star text-primary small"></i></li>
+                        <li class="list-inline-item small m-0"><i class="fas fa-star text-primary small"></i></li>
+                      </ul>
+                      <p class="text-small text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                        nostrud exercitation.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="d-flex mb-4"><img class="rounded-circle p-1 shadow-sm flex-grow-1 align-self-baseline"
+                      src="img/client-2.f8d832d9.jpg" alt="..." width="60">
+                    <div class="ms-3">
+                      <h3 class="h6 mb-0">Melissa Johanson</h3>
+                      <p class="text-gray small mb-0">15 Mar 2019</p>
+                      <ul class="list-inline mb-3">
+                        <li class="list-inline-item small m-0"><i class="fas fa-star text-primary small"></i></li>
+                        <li class="list-inline-item small m-0"><i class="fas fa-star text-primary small"></i></li>
+                        <li class="list-inline-item small m-0"><i class="fas fa-star text-primary small"></i></li>
+                        <li class="list-inline-item small m-0"><i class="fas fa-star text-primary small"></i></li>
+                        <li class="list-inline-item small m-0"><i class="fas fa-star text-primary small"></i></li>
+                      </ul>
+                      <p class="text-small text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                        nostrud exercitation.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
+            <div class="p-3 p-md-5">
+              <h6>Returns Policy</h6>
+              <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eros justo, accumsan
+                non dui sit amet. Phasellus semper volutpat mi sed imperdiet. Ut odio lectus, vulputate non ex non,
+                mattis sollicitudin purus. Mauris consequat justo a enim interdum, in consequat dolor accumsan. Nulla
+                iaculis diam purus, ut vehicula leo efficitur at.</p>
+              <p class="text-muted mb-5">Interdum et malesuada fames ac ante ipsum primis in faucibus. In blandit nunc
+                enim, sit amet pharetra erat aliquet ac.</p>
+              <h6>Shipping</h6>
+              <p class="text-muted">Pellentesque ultrices ut sem sit amet lacinia. Sed nisi dui, ultrices ut turpis
+                pulvinar. Sed fringilla ex eget lorem consectetur, consectetur blandit lacus varius. Duis vel
+                scelerisque elit, et vestibulum metus. Integer sit amet tincidunt tortor. Ut lacinia ullamcorper massa,
+                a fermentum arcu vehicula ut. Ut efficitur faucibus dui Nullam tristique dolor eget turpis consequat
+                varius. Quisque a interdum augue. Nam ut nibh mauris.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pb-5">
+  <div class="container pb-5">
+    <div class="row">
+      <div class="col-xl-10 mx-auto">
+        <header class="text-center mb-5">
+          <h2>You may also like</h2>
+          <p class="text-muted">Related products</p>
+        </header>
+        <div class="swiper-container" id="similarItemsSlider">
+          <div class="swiper-wrapper">
+            <!-- Product-->
+            <div class="swiper-slide pb-5">
+              <div class="product mb-4"><span class="badge rounded-0 bg-danger">Soldout</span><a href="detail.html"><img
+                    class="img-fluid" src="img/product-8.88684cc3.jpg" alt="Black Canon EOS camera"></a>
+                <div class="cta shadow d-inline-block"><a class="product-btn" href="#"><i
+                      class="fas fa-heart"></i></a><a class="product-btn" href="#productView" data-bs-toggle="modal"><i
+                      class="fas fa-expand"></i></a><a class="product-btn" href="cart.html"><i
+                      class="fas fa-dolly-flatbed"></i></a></div>
+              </div>
+              <h6 class="text-center"><a class="reset-anchor" href="detail.html">Black Canon EOS camera</a></h6>
+              <p class="text-center text-muted font-weight-bold">$22.00</p>
+            </div>
+            <!-- Product-->
+            <div class="swiper-slide pb-5">
+              <div class="product mb-4"><span class="badge rounded-0 bg-primary">New Arrival</span><a
+                  href="detail.html"><img class="img-fluid" src="img/product-9.7bc0d11d.jpg"
+                    alt="Silver round analog watch"></a>
+                <div class="cta shadow d-inline-block"><a class="product-btn" href="#"><i
+                      class="fas fa-heart"></i></a><a class="product-btn" href="#productView" data-bs-toggle="modal"><i
+                      class="fas fa-expand"></i></a><a class="product-btn" href="cart.html"><i
+                      class="fas fa-dolly-flatbed"></i></a></div>
+              </div>
+              <h6 class="text-center"><a class="reset-anchor" href="detail.html">Silver round analog watch</a></h6>
+              <p class="text-center text-muted font-weight-bold">$22.00</p>
+            </div>
+            <!-- Product-->
+            <div class="swiper-slide pb-5">
+              <div class="product mb-4"><span class="badge rounded-0 bg-"></span><a href="detail.html"><img
+                    class="img-fluid" src="img/product-10.d7432880.jpg" alt="Apple Watch"></a>
+                <div class="cta shadow d-inline-block"><a class="product-btn" href="#"><i
+                      class="fas fa-heart"></i></a><a class="product-btn" href="#productView" data-bs-toggle="modal"><i
+                      class="fas fa-expand"></i></a><a class="product-btn" href="cart.html"><i
+                      class="fas fa-dolly-flatbed"></i></a></div>
+              </div>
+              <h6 class="text-center"><a class="reset-anchor" href="detail.html">Apple Watch</a></h6>
+              <p class="text-center text-muted font-weight-bold">$22.00</p>
+            </div>
+            <!-- Product-->
+            <div class="swiper-slide pb-5">
+              <div class="product mb-4"><span class="badge rounded-0 bg-info">Trending</span><a href="detail.html"><img
+                    class="img-fluid" src="img/product-11.1f4b5e9b.jpg" alt="Joemalone Women prefume"></a>
+                <div class="cta shadow d-inline-block"><a class="product-btn" href="#"><i
+                      class="fas fa-heart"></i></a><a class="product-btn" href="#productView" data-bs-toggle="modal"><i
+                      class="fas fa-expand"></i></a><a class="product-btn" href="cart.html"><i
+                      class="fas fa-dolly-flatbed"></i></a></div>
+              </div>
+              <h6 class="text-center"><a class="reset-anchor" href="detail.html">Joemalone Women prefume</a></h6>
+              <p class="text-center text-muted font-weight-bold">$22.00</p>
+            </div>
+            <!-- Product-->
+            <div class="swiper-slide pb-5">
+              <div class="product mb-4"><span class="badge rounded-0 bg-"></span><a href="detail.html"><img
+                    class="img-fluid" src="img/product-12.c4210d28.jpg" alt="Nike air max 95"></a>
+                <div class="cta shadow d-inline-block"><a class="product-btn" href="#"><i
+                      class="fas fa-heart"></i></a><a class="product-btn" href="#productView" data-bs-toggle="modal"><i
+                      class="fas fa-expand"></i></a><a class="product-btn" href="cart.html"><i
+                      class="fas fa-dolly-flatbed"></i></a></div>
+              </div>
+              <h6 class="text-center"><a class="reset-anchor" href="detail.html">Nike air max 95</a></h6>
+              <p class="text-center text-muted font-weight-bold">$22.00</p>
+            </div>
+            <!-- Product-->
+            <div class="swiper-slide pb-5">
+              <div class="product mb-4"><span class="badge rounded-0 bg-danger">Soldout</span><a href="detail.html"><img
+                    class="img-fluid" src="img/product-13.aff049a7.jpg" alt="Red digital smartwatch"></a>
+                <div class="cta shadow d-inline-block"><a class="product-btn" href="#"><i
+                      class="fas fa-heart"></i></a><a class="product-btn" href="#productView" data-bs-toggle="modal"><i
+                      class="fas fa-expand"></i></a><a class="product-btn" href="cart.html"><i
+                      class="fas fa-dolly-flatbed"></i></a></div>
+              </div>
+              <h6 class="text-center"><a class="reset-anchor" href="detail.html">Red digital smartwatch</a></h6>
+              <p class="text-center text-muted font-weight-bold">$22.00</p>
+            </div>
+            <!-- Product-->
+            <div class="swiper-slide pb-5">
+              <div class="product mb-4"><span class="badge rounded-0 bg-"></span><a href="detail.html"><img
+                    class="img-fluid" src="img/product-14.1adefbd6.jpg" alt="Air Jordan 12 gym red"></a>
+                <div class="cta shadow d-inline-block"><a class="product-btn" href="#"><i
+                      class="fas fa-heart"></i></a><a class="product-btn" href="#productView" data-bs-toggle="modal"><i
+                      class="fas fa-expand"></i></a><a class="product-btn" href="cart.html"><i
+                      class="fas fa-dolly-flatbed"></i></a></div>
+              </div>
+              <h6 class="text-center"><a class="reset-anchor" href="detail.html">Air Jordan 12 gym red</a></h6>
+              <p class="text-center text-muted font-weight-bold">$22.00</p>
+            </div>
+            <!-- Product-->
+            <div class="swiper-slide pb-5">
+              <div class="product mb-4"><span class="badge rounded-0 bg-warning">Hot</span><a href="detail.html"><img
+                    class="img-fluid" src="img/product-15.37a0a89c.jpg" alt="Kui Ye Chen’s AirPods"></a>
+                <div class="cta shadow d-inline-block"><a class="product-btn" href="#"><i
+                      class="fas fa-heart"></i></a><a class="product-btn" href="#productView" data-bs-toggle="modal"><i
+                      class="fas fa-expand"></i></a><a class="product-btn" href="cart.html"><i
+                      class="fas fa-dolly-flatbed"></i></a></div>
+              </div>
+              <h6 class="text-center"><a class="reset-anchor" href="detail.html">Kui Ye Chen’s AirPods</a></h6>
+              <p class="text-center text-muted font-weight-bold">$22.00</p>
+            </div>
+            <!-- Product-->
+            <div class="swiper-slide pb-5">
+              <div class="product mb-4"><span class="badge rounded-0 bg-"></span><a href="detail.html"><img
+                    class="img-fluid" src="img/product-10.d7432880.jpg" alt="Apple watch"></a>
+                <div class="cta shadow d-inline-block"><a class="product-btn" href="#"><i
+                      class="fas fa-heart"></i></a><a class="product-btn" href="#productView" data-bs-toggle="modal"><i
+                      class="fas fa-expand"></i></a><a class="product-btn" href="cart.html"><i
+                      class="fas fa-dolly-flatbed"></i></a></div>
+              </div>
+              <h6 class="text-center"><a class="reset-anchor" href="detail.html">Apple watch</a></h6>
+              <p class="text-center text-muted font-weight-bold">$22.00</p>
+            </div>
+          </div>
+          <div class="swiper-button-prev px-3 py-2">
+            <svg class="svg-icon svg-icon-md">
+              <use xlink:href="#arrow-left-1"> </use>
+            </svg>Prev
+          </div>
+          <div class="swiper-button-next px-3 py-2">
+            Next
+            <svg class="svg-icon svg-icon-md">
+              <use xlink:href="#arrow-right-1"> </use>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+

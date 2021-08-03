@@ -4,13 +4,19 @@
 
       <div class="row mt-0 p-0 mb-0">
 
-        <div class="">
+        <div class="col-lg-4">
+         
+        </div>
+        <div class="col-lg-4 ">
           <div class="input-group mb-3 d-flex justify-content-center">
-            <input [(ngModel)]="selectedSearchValue" type="text" class="rounded-0 border-primary"
+            <input [(ngModel)]="selectedSearchValue" type="text" class="form-control text-center pl-2"
               placeholder="      Search Product     " aria-label="search" aria-describedby="button-addon2">
             <button (click)=" applySearch()" class="btn btn-outline-primary rounded-0" type="button"
               id="button-addon2">Search</button>
           </div>
+        </div>
+        <div class="col-lg-4">
+         
         </div>
       </div>
       <!-- Shop sidebar-->
@@ -73,21 +79,12 @@
         <div class="row">
           <!-- Product-->
           <div *ngFor="let product of products" class="col-xl-3 col-lg-4 col-6">
-            <div class="product mb-4"><span class="badge rounded-0 bg-primary">{{product.productBrand}}</span><a
-                href="detail.html"><img class="img-fluid"
-                  src="https://whitecompany.scene7.com/is/image/whitecompany/Face-Cloth---Set-of-3/SKDCL_15_MAIN"
-                  alt="Round grey hanging decor"></a>
-              <div class="cta shadow d-inline-block"><a class="product-btn" href="#"><i class="fas fa-heart"></i></a><a
-                  class="product-btn" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a><a
-                  class="product-btn" href="cart.html"><i class="fas fa-dolly-flatbed"></i></a></div>
-            </div>
-            <h6 class="text-center"><a class="reset-anchor" href="detail.html">{{product.name}}</a></h6>
-            <p class="text-center text-muted font-weight-bold mb-4">Rs. {{product.price}}</p>
+            <app-product-item [product]='product'></app-product-item>
           </div>
 
           <!-- Pagination-->
-          <nav class="pt-5" aria-label="Page navigation">
-            <mat-paginator [length]=totalItem+1 [pageSize]=itemPerPage (page)="applyFilter($event)"
+          <nav class="pt-2" aria-label="Page navigation">
+            <mat-paginator [length]=totalItem+1 [pageSize]=itemPerPage  (page)="applyFilter($event)"
               aria-label="Select page">
             </mat-paginator>
           </nav>

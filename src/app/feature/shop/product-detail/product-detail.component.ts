@@ -48,7 +48,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   onDecrement() {
-    if (this.quantity !== 0) {
+    if (this.quantity !== 1) {
       this.quantity = this.quantity - 1;
     }
 

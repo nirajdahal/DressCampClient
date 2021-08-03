@@ -21,9 +21,9 @@ export class ShopComponent implements OnInit {
   selectedSearchValue: any = '';
   currentPage = 1;
   totalItem = 0;
-  itemPerPage = 5;
+  itemPerPage = 1;
   productBrands: IBrand[] = [];
-  
+
   constructor(private shopService: ShopService) { }
 
   ngOnInit(): void {
@@ -33,14 +33,14 @@ export class ShopComponent implements OnInit {
   }
 
 
-  getProductBrand(){
+  getProductBrand() {
     this.shopService.getBrands().subscribe(b => {
-        this.productBrands = b;
+      this.productBrands = b;
     })
   }
-  getProductType(){
+  getProductType() {
     this.shopService.getProductTypes().subscribe(t => {
-      this.productTypes= t;
+      this.productTypes = t;
     })
   }
 
@@ -55,7 +55,7 @@ export class ShopComponent implements OnInit {
     };
     this.shopService.getProducts(productParam).subscribe(p => {
 
-      if(p !==null){
+      if (p !== null) {
         this.products = p.data;
         console.log(this.products);
         this.totalItem = p.count;
@@ -67,32 +67,37 @@ export class ShopComponent implements OnInit {
   }
 
 
-  onBrandSelected(id : number){
+  onBrandSelected(id: number) {
     this.selectedBrandId = id;
     this.getProducts();
   }
 
-  onTypeSelected(id : number){
+  onTypeSelected(id: number) {
     this.selectedTypeId = id;
     this.getProducts();
   }
-  
-  onSortSelected(val:any) {
 
-  
-      this.selectedSortValue = val.value
+  onSortSelected(val: any) {
+
+
+    this.selectedSortValue = val.value
     console.log(this.selectedSortValue)
-    
+
     this.getProducts();
   }
 
-  
+
   applySearch() {
 
     this.getProducts();
 
   }
 
+  applyFilter(e: any) {
+    console.log(e.pageIndex + 1);
+    this.currentPage = e.pageIndex + 1;
+    this.getProducts();
+  }
 
   clearFilter() {
 
@@ -104,5 +109,6 @@ export class ShopComponent implements OnInit {
     this.getProducts();
 
   }
+
 
 }

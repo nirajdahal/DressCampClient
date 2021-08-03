@@ -13,6 +13,7 @@ import { HomeComponent } from './feature/home/home.component';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 import { ShopComponent } from './feature/shop/shop.component';
 import { FormsModule } from '@angular/forms';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -28,6 +29,7 @@ export function tokenGetter() {
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
+    MatPaginatorModule,
     CoreModule,
     FormsModule ,
     RouterModule,

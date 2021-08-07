@@ -1,0 +1,54 @@
+<div *ngIf="items!==undefined" class="table-responsive mb-4">
+  <table class="table">
+    <thead class="bg-light">
+      <tr >
+        <th class="p-3 border-0" scope="col"><strong class="text-uppercase">Product</strong></th>
+        <th class="p-3 border-0" scope="col"><strong class="text-uppercase">Price</strong></th>
+        <th class="p-3 border-0" scope="col"><strong class="text-uppercase">Quantity</strong></th>
+        <th class="p-3 border-0" scope="col"><strong class="text-uppercase">Total</strong></th>
+        <th class="p-3 border-0" scope="col"><strong class="text-uppercase"></strong></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <th class="p-3 pl-0 border-0" scope="row">
+          <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link" ><img routerLink='/shop/{{item.id}}' src="{{item.pictureUrl}}" alt="..." width="70"></a>
+            <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link" routerLink="/shop/{{item.id}}">{{item.productName}}</a></strong></div>
+          </div>
+        </th>
+        <td class="p-3 align-middle border-0">
+          <p class="mb-0 small">Rs. {{item.price}}</p>
+        </td>
+        <td class="p-3 align-middle border-0">
+          <div class="border d-inline-block px-2">
+            <div class="quantity">
+              <button class="dec-btn p-0" (click)="decrease(item)"><i class="fas fa-caret-left"></i></button>
+              <input class="form-control border-0 shadow-0 p-0 quantity-result" type="text" value="{{item.quantity}}">
+              <button class="inc-btn p-0" (click)="increase(item)"><i class="fas fa-caret-right"></i></button>
+            </div>
+          </div>
+        </td>
+        <td class="p-3 align-middle border-0">
+          <p class="mb-0 small">Rs. {{item.price * item.quantity}}</p>
+        </td>
+        <td class="p-3 align-middle border-0"><a class="reset-anchor" href="#"><i class="fas fa-trash-alt small text-muted"></i></a></td>
+      </tr>
+     
+    </tbody>
+  </table>
+  <!-- Cart footer-->
+  <div class="bg-light p-4">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item py-1"><a class="btn btn-outline-primary" href="#"> <i class="fas fa-shopping-bag me-2"></i>Continue shopping</a></li>
+          <li class="list-inline-item py-1"><a class="btn btn-primary" href="checkout.html"> <i class="far fa-credit-card me-2"></i>Process checkout</a></li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-start text-md-end">
+        <p class="text-muted mb-1">Cart total</p>
+        <h6 class="h4 mb-0">$75.00</h6>
+      </div>
+    </div>
+  </div>
+</div>

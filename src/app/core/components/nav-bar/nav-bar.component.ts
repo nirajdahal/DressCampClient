@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SocialAuthService } from 'angularx-social-login';
+import { Observable } from 'rxjs';
 import { AccountService } from 'src/app/feature/account/account.service';
+import { BasketService } from 'src/app/feature/basket/basket.service';
+import { IBasket } from 'src/app/shared/models/baskets/basket';
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,7 +15,8 @@ export class NavBarComponent implements OnInit {
 
   isUserAuthenticated!: boolean;
   isExternalAuth!: boolean;
-  constructor(private _authService: AccountService, private _router: Router, private _socialAuthService: SocialAuthService) { }
+  basket$!: Observable<IBasket | null> ;
+  constructor(private _authService: AccountService,private _basketService: BasketService, private _router: Router, private _socialAuthService: SocialAuthService) { }
   ngOnInit(): void {
     this._authService.authChanged
     .subscribe((res: boolean) => {
@@ -22,7 +26,8 @@ export class NavBarComponent implements OnInit {
     this._socialAuthService.authState.subscribe(user => {
       this.isExternalAuth = user != null;
     })
-    
+
+    this.basket$ = this._basketService.basket$;
   }
 
   public logout = () => {

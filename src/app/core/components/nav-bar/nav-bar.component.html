@@ -28,8 +28,8 @@
       <!-- Navbar menu left-->
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 flex-row">
 
-        <li class="nav-item me-3"><a class="nav-link text-uppercase position-relative" href="#"><i
-              class="p-2 fas fa-shopping-cart"></i><span class="badge rounded-pill bg-primary">0</span></a></li>
+        <li  class="nav-item me-3"><a class="nav-link text-uppercase position-relative" routerLink="/basket"><i
+              class="p-2 fas fa-shopping-cart"></i><span *ngIf="(basket$ | async) as basket" class="badge rounded-pill bg-primary">{{basket.items.length}}</span></a></li>
         
         <li *ngIf="!isUserAuthenticated" class="nav-item me-3">
           <a class="nav-link text-uppercase position-relative" routerLink='/account/login'

@@ -14,6 +14,9 @@ import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 
 import { ShopComponent } from './feature/shop/shop.component';
 import { FormsModule } from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { BasketComponent } from './feature/basket/basket.component';
+import { BasketSummaryComponent } from './shared/components/basket-summary/basket-summary.component';
+import { SharedModule } from './shared/shared.module';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -22,8 +25,10 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     HomeComponent
+  
   ],
   imports: [
+    SharedModule,
     SocialLoginModule,
     HttpClientModule,
     BrowserModule,

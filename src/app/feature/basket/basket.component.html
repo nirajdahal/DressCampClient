@@ -1,0 +1,26 @@
+<section *ngIf="(basket$ | async) as basket" class="py-5">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <!-- Navigation-->
+        <header class="text-center mb-5">
+          <h2>Shopping cart</h2>
+        </header>
+        <ul class="nav nav-tabs nav-fill border-bottom mb-5 flex-column flex-md-row">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">1. Shopping cart</a></li>
+          <li class="nav-item"><a class="nav-link disabled" href="#">2. Billing Information</a></li>
+          <li class="nav-item"><a class="nav-link disabled" href="#">3. Completed</a></li>
+        </ul>
+        <div class="container-fluid">
+          <app-basket-summary 
+          [items]="basket.items" 
+          (decreaseQuantity)="decreaseItemQuantity($event)"
+           (increaseQuantity)="increaseItemQuantity($event)"
+           ></app-basket-summary>
+        </div>
+        <!-- Shopping cart-->
+
+      </div>
+    </div>
+  </div>
+</section>

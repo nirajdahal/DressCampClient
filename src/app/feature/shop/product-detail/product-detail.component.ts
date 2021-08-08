@@ -1,6 +1,8 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IProduct } from 'src/app/shared/models/products/product';
+import { BasketService } from '../../basket/basket.service';
 import { ShopService } from '../shop.service';
 
 @Component({
@@ -10,7 +12,14 @@ import { ShopService } from '../shop.service';
 })
 export class ProductDetailComponent implements OnInit {
 
-  constructor(private _shopService: ShopService, private activatedRoute: ActivatedRoute) { }
+  constructor
+    (
+      private _shopService: ShopService,
+      private activatedRoute: ActivatedRoute,
+      private _basketService: BasketService
+    ) { }
+
+
   idForProduct!: number;
   product!: IProduct;
 
@@ -52,6 +61,11 @@ export class ProductDetailComponent implements OnInit {
       this.quantity = this.quantity - 1;
     }
 
+  }
+
+  addItemToCart() {
+    console.log("button clicked")
+    this._basketService.addItemToBasket(this.product, this.quantity);
   }
 
 

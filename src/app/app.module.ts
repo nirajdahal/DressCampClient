@@ -17,6 +17,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { BasketComponent } from './feature/basket/basket.component';
 import { BasketSummaryComponent } from './shared/components/basket-summary/basket-summary.component';
 import { SharedModule } from './shared/shared.module';
+import { CheckoutComponent } from './feature/checkout/checkout.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");

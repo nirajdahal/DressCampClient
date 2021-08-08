@@ -6,7 +6,9 @@ const routes: Routes = [
   {path:'', component:HomeComponent},
   { path: 'account', loadChildren: () => import('./feature/account/account.module').then(mod => mod.AccountModule) },
   { path: 'shop', loadChildren: () => import('./feature/shop/shop.module').then(mod => mod.ShopModule) },
-  { path: 'basket', loadChildren: () => import('./feature/basket/basket.module').then(mod => mod.BasketModule) }
+  { path: 'basket', loadChildren: () => import('./feature/basket/basket.module').then(mod => mod.BasketModule) },
+  { path: 'checkout', loadChildren: () => import('./feature/checkout/checkout.module').then(mod => mod.CheckoutModule) }
+
 
 ];
 

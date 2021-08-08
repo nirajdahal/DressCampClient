@@ -14,6 +14,7 @@ export class BasketSummaryComponent implements OnInit {
   @Input() items! : IBasketItem[] ;
   @Output() decreaseQuantity:EventEmitter<IBasketItem>= new EventEmitter();  
   @Output() increaseQuantity:EventEmitter<IBasketItem>= new EventEmitter();  
+  @Output() basketToDeleteId:EventEmitter<IBasketItem>= new EventEmitter();
   ngOnInit(): void {
     
   
@@ -24,6 +25,10 @@ export class BasketSummaryComponent implements OnInit {
   }
   increase(item:any){
     this.increaseQuantity.emit(item);
+  }
+  delete(item:IBasketItem){
+   
+    this.basketToDeleteId.emit(item);
   }
 
 

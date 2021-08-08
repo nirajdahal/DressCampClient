@@ -31,7 +31,7 @@
         <td class="p-3 align-middle border-0">
           <p class="mb-0 small">Rs. {{item.price * item.quantity}}</p>
         </td>
-        <td class="p-3 align-middle border-0"><a class="reset-anchor" href="#"><i class="fas fa-trash-alt small text-muted"></i></a></td>
+        <td class="p-3 align-middle border-0"><a class="reset-anchor" ><button class="btn "><i (click)="delete(item)" class="fas fa-trash-alt small text-muted"></i></button></a></td>
       </tr>
      
     </tbody>
@@ -52,3 +52,4 @@
     </div>
   </div>
 </div>
+

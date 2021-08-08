@@ -27,5 +27,10 @@ export class BasketComponent implements OnInit {
     this.basketService.incrementItemQuantity($event);
   }
 
+  deleteItemFromBasket($event:any){
+    this.basketService.removeItemFromBasket($event);
+  }
+
+
 
 }

@@ -3,6 +3,8 @@ import { IProduct } from 'src/app/shared/models/products/product';
 import { IBrand } from 'src/app/shared/models/products/productBrand';
 import { IProductParam } from 'src/app/shared/models/products/productparam';
 import { IType } from 'src/app/shared/models/products/productType';
+import { AccountService } from '../account/account.service';
+import { BasketService } from '../basket/basket.service';
 import { ShopService } from './shop.service';
 
 @Component({
@@ -24,12 +26,15 @@ export class ShopComponent implements OnInit {
   itemPerPage = 1;
   productBrands: IBrand[] = [];
 
-  constructor(private shopService: ShopService) { }
+  constructor(private shopService: ShopService, private accountService: AccountService, private basketService: BasketService) { }
 
   ngOnInit(): void {
     this.getProductBrand();
     this.getProductType();
     this.getProducts();
+    if(this.accountService.isUserAuthenticated()){
+      this.basketService.getBasket();
+    }
   }
 
 

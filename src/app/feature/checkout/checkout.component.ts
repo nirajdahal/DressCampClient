@@ -16,6 +16,9 @@ export class CheckoutComponent implements OnInit {
   constructor(private checkoutService : CheckoutService) { }
 
   ngOnInit(): void {
+
+    
+
     this.checkoutForm = new FormGroup({
       firstName : new FormControl("", [Validators.required]),
       lastName : new FormControl("", [Validators.required]),

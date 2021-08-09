@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { Basket, IBasket, IBasketItem, IBasketTotal } from 'src/app/shared/models/baskets/basket';
 import { IProduct } from 'src/app/shared/models/products/product';
 import { environment } from 'src/environments/environment';
+import { AccountService } from '../account/account.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +14,20 @@ export class BasketService {
 
   baseUrl = environment.apiUrl;
 
-  private basketSource = new BehaviorSubject<IBasket | null>(null);
+  public basketSource = new BehaviorSubject<IBasket | null>(null);
   basket$ = this.basketSource.asObservable();
   private basketTotalSource = new BehaviorSubject<IBasketTotal | null>(null);
   basketTotal$ = this.basketTotalSource.asObservable();
-  constructor(private httpClinet: HttpClient) { }
+  constructor(private httpClinet: HttpClient, private _userService: AccountService) { }
 
 
-  getBasket(id: string) {
-    return this.httpClinet.get(this.baseUrl + "basket?id=" + id).pipe(
+  getBasket() {
+    return this.httpClinet.get(this.baseUrl + "basket").pipe(
 
       map((basket: IBasket | any) => {
+        localStorage.setItem("basket_id", basket.id)
         this.basketSource.next(basket);
+        
         this.calculateTotal();
       })
     )
@@ -45,11 +48,13 @@ export class BasketService {
 
   addItemToBasket(item: IProduct, quantity = 1) {
     const itemToAdd: IBasketItem = this.mapProductItemToBasketItem(item, quantity);
-    const basket = this.getCurrentBasketValue() ?? this.CreateBasket()
-
-    basket.items = this.addOrUpdateItem(basket.items, itemToAdd, quantity)
+    const basket = this.getCurrentBasketValue();
+    if(basket !==null){
+      basket.items = this.addOrUpdateItem(basket.items, itemToAdd, quantity)
     console.log("basket", basket);
     this.setBasket(basket);
+    }
+    
   }
   private addOrUpdateItem(items: IBasketItem[], itemToAdd: IBasketItem, quantity: number): IBasketItem[] {
 
@@ -63,11 +68,18 @@ export class BasketService {
     }
     return items;
   }
-  private CreateBasket(): IBasket {
-    const basket = new Basket();
-    localStorage.setItem("basket_id", basket.id)
-    return basket;
-  }
+  // private CreateBasket(): IBasket {
+  //   //if user is authenticated
+  //   let isUser = this._userService.isUserAuthenticated();
+  //   if(isUser){
+  //     //get id of basket from user
+  //   const basket = new Basket();
+  //   localStorage.setItem("basket_id", basket.id)
+  //   return basket;
+  //   }
+    
+    
+  // }
 
   private mapProductItemToBasketItem(item: IProduct, quantity: number): IBasketItem {
     return {

@@ -32,8 +32,13 @@ export class NavBarComponent implements OnInit {
 
   public logout = () => {
     this._authService.logout();
-    if(this.isExternalAuth)
+    if(this.isExternalAuth){
       this._authService.signOutExternal();
+    }
+      
+      localStorage.removeItem('basket_id');
+      this._basketService.basketSource.next(null);
+    
     this._router.navigate(["/account/login"]);
   }
 

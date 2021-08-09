@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SocialUser } from 'angularx-social-login';
 import { ExternalAuthDto } from 'src/app/shared/models/users/ExternalAuthDto';
 import { UserForAuthenticationDto } from 'src/app/shared/models/users/UserForAuthenticationDto';
+import { BasketService } from '../../basket/basket.service';
 import { AccountService } from '../account.service';
 
 @Component({
@@ -17,13 +18,17 @@ export class LoginComponent implements OnInit {
   public errorMessage: string = '';
   public showError!: boolean;
   private _returnUrl!: string;
-  constructor(private _authService: AccountService , private _router: Router, private _route: ActivatedRoute) { }
+  constructor(private basketService: BasketService, private _authService: AccountService , private _router: Router, private _route: ActivatedRoute) { }
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       email: new FormControl("", [Validators.required, Validators.email]),
       password: new FormControl("", [Validators.required])
     })
-    this._returnUrl = this._route.snapshot.queryParams['returnUrl'] || '';
+    this._returnUrl = this._route.snapshot.queryParams['returnUrl'] || 'shop';
+
+    if(this._authService.isUserAuthenticated()){
+      this._router.navigate(['shop'])
+    }
   }
   public validateControl = (controlName: string) => {
     return this.loginForm.controls[controlName].invalid && this.loginForm.controls[controlName].touched
@@ -43,7 +48,10 @@ export class LoginComponent implements OnInit {
     .subscribe(res => {
        localStorage.setItem("token", res.token);
        this._authService.sendAuthStateChangeNotification(res.isAuthenticationSuccesfull);
-       this._router.navigate([this._returnUrl]);
+       this.basketService.getBasket().subscribe(x =>{
+        this._router.navigate([this._returnUrl]);
+      });
+       
     })
   }
 
@@ -66,7 +74,11 @@ export class LoginComponent implements OnInit {
       .subscribe(res => {
         localStorage.setItem("token", res.token);
         this._authService.sendAuthStateChangeNotification(res.isAuthenticationSuccesfull);
-        this._router.navigate([this._returnUrl]);
+        this.basketService.getBasket().subscribe(x =>{
+          this._router.navigate([this._returnUrl]);
+        });
+        
+        
       },
       error => {
         this.errorMessage = error;

@@ -1,7 +1,8 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from 'src/app/shared/models/products/product';
+import { AccountService } from '../../account/account.service';
 import { BasketService } from '../../basket/basket.service';
 import { ShopService } from '../shop.service';
 
@@ -16,7 +17,9 @@ export class ProductDetailComponent implements OnInit {
     (
       private _shopService: ShopService,
       private activatedRoute: ActivatedRoute,
-      private _basketService: BasketService
+      private _basketService: BasketService,
+      private _accountService : AccountService,
+      private _router: Router
     ) { }
 
 
@@ -65,7 +68,13 @@ export class ProductDetailComponent implements OnInit {
 
   addItemToCart() {
     console.log("button clicked")
-    this._basketService.addItemToBasket(this.product, this.quantity);
+    if(this._accountService.isUserAuthenticated()){
+      this._basketService.addItemToBasket(this.product, this.quantity);
+    }
+    else{
+      this._router.navigate(['account/login']);
+    }
+    
   }
 
 

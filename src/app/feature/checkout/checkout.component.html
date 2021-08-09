@@ -82,8 +82,8 @@
 
                     <div class="form-group col-lg-6">
                       <label class="form-label ">Delivery Method</label>
-                      <select formControlName="deliveryMethod" class="form-control" name="Delivery Method">
-                        <option value="">Select Delivery &nbsp;&nbsp;&nbsp; ▼</option>
+                      <select formControlName="deliveryMethod" class="form-control text-sm" name="Delivery Method">
+                        <option value="">Select Delivery &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ▼</option>
                         <option *ngFor="let deliveryMethod of deliveryMethods" value="{{deliveryMethod.id}}">
                           {{deliveryMethod.shortName}} (Rs.{{deliveryMethod.price}}) - {{deliveryMethod.deliveryTime}} days</option>
 

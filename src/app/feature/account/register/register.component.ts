@@ -25,6 +25,8 @@ export class RegisterComponent implements OnInit {
 
     this.registerForm.get('confirm').setValidators([Validators.required,
       this._passConfValidator.validateConfirmPassword(this.registerForm.get('password'))]);
+
+      this._router.navigate(['shop'])
   }
   
   public validateControl = (controlName: string) => {

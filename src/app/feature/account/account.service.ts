@@ -95,6 +95,7 @@ export class AccountService {
   }
   
   public signOutExternal = () => {
+
     this._externalAuthService.signOut();
   }
   public externalLogin = (route: string, body: ExternalAuthDto) => {

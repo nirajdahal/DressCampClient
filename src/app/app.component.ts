@@ -19,21 +19,22 @@ export class AppComponent implements OnInit{
     if(this._accountService.isUserAuthenticated()){
       console.log("i am in")
         this._accountService.sendAuthStateChangeNotification(true);
+        this.loadBasket();
     }
-    this.loadBasket();
+    
   
   }
 
   
   loadBasket() {
-    const basketId = localStorage.getItem('basket_id');
-    if (basketId) {
-      this.basketService.getBasket(basketId).subscribe(() => {
+    
+     
+      this.basketService.getBasket().subscribe(() => {
         console.log('initialised basket');
       }, error => {
         console.log(error);
       })
-    }
+    
   }
   
 }

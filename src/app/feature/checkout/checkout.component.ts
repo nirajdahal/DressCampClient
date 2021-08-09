@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { IDeliveryMethod, IOrderToCreate, IAddress } from 'src/app/shared/models/orders/order';
+import { BasketService } from '../basket/basket.service';
 import { CheckoutService } from './checkout.service';
 
 @Component({
@@ -12,8 +15,9 @@ export class CheckoutComponent implements OnInit {
 
   public checkoutForm!: FormGroup;
   deliveryMethods!: IDeliveryMethod[];
+  showSuccessMessage: boolean = false;
   
-  constructor(private checkoutService : CheckoutService) { }
+  constructor(private router: Router, private checkoutService : CheckoutService, private toastr: ToastrService, private basketService: BasketService) { }
 
   ngOnInit(): void {
 
@@ -56,7 +60,10 @@ export class CheckoutComponent implements OnInit {
       }
 
       this.checkoutService.createOrder(orderToCreate).subscribe(x => {
-        console.log(x)
+        this.basketService.deleteBasket(basketId);
+
+      this.toastr.success("Order Placed Successfully")
+      this.showSuccessMessage = true;
       });
     }
     

@@ -1,4 +1,4 @@
-<section class="py-5">
+<section *ngIf="!showSuccessMessage" class="py-5">
   <div class="container py-5">
     <div class="row">
       <div class="col-lg-10 mx-auto">
@@ -119,3 +119,12 @@
     </div>
   </div>
 </section>
+
+<div *ngIf="showSuccessMessage" class="container">
+  <div class="row"> 
+    <div class="col-12 text-center pt-5 mt-5">
+  <h1 class="mt-5 pt-5">Your order has been created sucessfully.</h1>
+  <button class="btn btn-outline-primary">Go To Orders</button>
+    </div>
+  </div>
+  </div>

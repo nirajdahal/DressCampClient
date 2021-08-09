@@ -140,7 +140,7 @@ export class BasketService {
         if (basket.items.length > 0) {
           this.setBasket(basket);
         } else {
-          this.deleteBasket(basket);
+          this.deleteBasket(basket.id);
         }
       }
     }
@@ -152,7 +152,7 @@ export class BasketService {
     localStorage.removeItem('basket_id');
   }
 
-  deleteBasket(basketId: IBasket) {
+  deleteBasket(basketId: string) {
     return this.httpClinet.delete(this.baseUrl + 'basket?id=' + basketId).subscribe(() => {
       this.basketSource.next(null);
       this.basketTotalSource.next(null);

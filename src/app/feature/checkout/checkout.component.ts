@@ -15,7 +15,7 @@ export class CheckoutComponent implements OnInit {
 
   public checkoutForm!: FormGroup;
   deliveryMethods!: IDeliveryMethod[];
-  showSuccessMessage: boolean = false;
+  showSuccessMessage: boolean = true;
   
   constructor(private router: Router, private checkoutService : CheckoutService, private toastr: ToastrService, private basketService: BasketService) { }
 

@@ -15,6 +15,7 @@ export class BasketSummaryComponent implements OnInit {
   @Output() decreaseQuantity:EventEmitter<IBasketItem>= new EventEmitter();  
   @Output() increaseQuantity:EventEmitter<IBasketItem>= new EventEmitter();  
   @Output() basketToDeleteId:EventEmitter<IBasketItem>= new EventEmitter();
+  @Input() showButtons: boolean = true;
   ngOnInit(): void {
     
   

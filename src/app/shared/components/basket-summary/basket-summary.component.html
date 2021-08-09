@@ -19,7 +19,7 @@
         <td class="p-3 align-middle border-0">
           <p class="mb-0 small">Rs. {{item.price}}</p>
         </td>
-        <td class="p-3 align-middle border-0">
+        <td *ngIf="showButtons" class="p-3 align-middle border-0">
           <div class="border d-inline-block px-2">
             <div class="quantity">
               <button class="dec-btn p-0" (click)="decrease(item)"><i class="fas fa-caret-left"></i></button>

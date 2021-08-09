@@ -68,18 +68,6 @@ export class BasketService {
     }
     return items;
   }
-  // private CreateBasket(): IBasket {
-  //   //if user is authenticated
-  //   let isUser = this._userService.isUserAuthenticated();
-  //   if(isUser){
-  //     //get id of basket from user
-  //   const basket = new Basket();
-  //   localStorage.setItem("basket_id", basket.id)
-  //   return basket;
-  //   }
-    
-    
-  // }
 
   private mapProductItemToBasketItem(item: IProduct, quantity: number): IBasketItem {
     return {

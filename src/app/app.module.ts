@@ -18,6 +18,7 @@ import { BasketComponent } from './feature/basket/basket.component';
 import { BasketSummaryComponent } from './shared/components/basket-summary/basket-summary.component';
 import { SharedModule } from './shared/shared.module';
 import { CheckoutComponent } from './feature/checkout/checkout.component';
+import { OrderComponent } from './feature/order/order.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
